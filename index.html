@@ -73,11 +73,13 @@ nav .btn{min-height:42px;padding:0 18px;font-size:15px}
 .card.hide{display:none}
 /* preview */
 .soft{background:var(--soft)}
-.pv{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(24px,4vw,56px);align-items:center}
+.pv{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:clamp(24px,4vw,56px);align-items:center}
 .pvtabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
 .pv ul{list-style:none;margin:0 0 26px;padding:0;display:grid;gap:12px}
 .pv li{display:flex;gap:12px;align-items:flex-start}
 .pv li svg{flex:none;margin-top:3px}
+#preview .pv{align-items:start}.vid{background:#000;aspect-ratio:16/9}.vid video{display:block;width:100%;height:100%;object-fit:contain;background:#000}
+.ready{display:inline-flex;align-self:flex-start;align-items:center;gap:6px;background:#dff7e8;color:#0f7a3d;font-size:12.5px;font-weight:700;padding:3px 10px;border-radius:999px;margin-bottom:6px;text-decoration:none}
 .screen{background:var(--card);border-radius:20px;border:1px solid var(--line);box-shadow:0 30px 60px #0b4fd122;overflow:hidden}
 .bar{display:flex;align-items:center;gap:6px;padding:12px 16px;border-bottom:1px solid var(--line);font-size:13px;color:var(--mute)}
 .bar i{width:10px;height:10px;border-radius:50%;background:var(--line)}
@@ -152,18 +154,18 @@ footer .wrap{display:flex;gap:14px;justify-content:space-between;flex-wrap:wrap}
 <body>
 <nav><div class="wrap">
  <a class="logo" href="#top"><span class="mk">MD</span><span>MD Business<small>Management System</small></span></a>
- <div class="links"><a href="#systems">Systems</a><a href="#preview">Preview</a><a href="#prices">Prices</a><a href="#faq">FAQ</a></div>
+ <div class="links"><a href="#systems">Systems</a><a href="#preview">Demos</a><a href="#prices">Prices</a><a href="#faq">FAQ</a></div>
  <a class="btn blue" href="#order">Get a quote</a>
 </div></nav>
 
 <header class="hero band" id="top"><div class="wrap">
  <div>
   <h1>Run your business on your own system</h1>
-  <p class="lead">Shop, stock, payroll, school fees, hospital, chama and money systems — built for Kenyan businesses, with your name on them.</p>
+  <p class="lead">Restaurant, shop, stock, payroll, school fees, chama and more — simple systems built for Kenyan businesses, that work even without internet.</p>
   <div class="ctas"><a class="btn sun" href="#order">Order on WhatsApp</a><a class="btn line" href="#systems">See all systems</a></div>
   <ul class="ticks">
    <li><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#ffb020"/><path d="M5 9.5l2.5 2.5L13 6.5" stroke="#1a1200" stroke-width="2" fill="none" stroke-linecap="round"/></svg>Works on phone &amp; computer</li>
-   <li><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#ffb020"/><path d="M5 9.5l2.5 2.5L13 6.5" stroke="#1a1200" stroke-width="2" fill="none" stroke-linecap="round"/></svg>Your name &amp; colours</li>
+   <li><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#ffb020"/><path d="M5 9.5l2.5 2.5L13 6.5" stroke="#1a1200" stroke-width="2" fill="none" stroke-linecap="round"/></svg>Works without internet</li>
    <li><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#ffb020"/><path d="M5 9.5l2.5 2.5L13 6.5" stroke="#1a1200" stroke-width="2" fill="none" stroke-linecap="round"/></svg>Help in English &amp; Swahili</li>
   </ul>
  </div>
@@ -196,21 +198,25 @@ footer .wrap{display:flex;gap:14px;justify-content:space-between;flex-wrap:wrap}
 <section class="band" id="systems"><div class="wrap">
  <p class="kicker">What we build</p>
  <h2>A system for every kind of business</h2>
- <p class="sub">Every system is set up with your name, your colours and your way of working. Don't see yours? Tell us — we build custom too.</p>
+ <p class="sub">Systems marked <b>Ready</b> have a demo video below. Every system is set up with your name, your colours and your way of working. Don't see yours? Tell us — we build custom too.</p>
  <div class="tabs" id="tabs" role="group" aria-label="Filter systems"></div>
  <div class="grid" id="grid"></div>
 </div></section>
 
-<section class="band soft" id="preview"><div class="wrap pv">
- <div>
-  <p class="kicker">See what you get</p>
-  <h2 id="pvTitle"></h2>
-  <p class="sub" id="pvText" style="margin-bottom:20px"></p>
-  <div class="pvtabs" id="pvTabs" role="group" aria-label="Choose a system to preview"></div>
-  <ul id="pvList"></ul>
-  <a class="btn blue" href="#order" id="pvBtn">Order this system</a>
+<section class="band soft" id="preview"><div class="wrap">
+ <p class="kicker">Watch them work</p>
+ <h2>Our systems in action</h2>
+ <p class="sub">These are real MD systems running today. Tap one to watch a short demo.</p>
+ <div class="pvtabs" id="pvTabs" role="group" aria-label="Choose a system to watch"></div>
+ <div class="pv">
+  <div class="screen vid"><video id="pvVideo" controls playsinline preload="metadata"></video></div>
+  <div>
+   <h3 id="pvTitle" style="font-size:clamp(24px,2.6vw,30px);margin-bottom:6px"></h3>
+   <p class="sub" id="pvText" style="margin-bottom:20px"></p>
+   <ul id="pvList"></ul>
+   <a class="btn blue" href="#order" id="pvBtn">Order this system</a>
+  </div>
  </div>
- <div><div class="screen"><div class="bar"><i></i><i></i><i></i><span id="pvBar"></span></div><div class="scr" id="pvScreen"></div><p class="eg">Example screen with sample data</p></div></div>
 </div></section>
 
 <section class="band"><div class="wrap">
@@ -218,7 +224,7 @@ footer .wrap{display:flex;gap:14px;justify-content:space-between;flex-wrap:wrap}
  <h2>Built simple, built for Kenya</h2>
  <p class="sub">No complicated software or expensive licences. Just a system your staff can learn in an afternoon.</p>
  <div class="why">
-  <div><div class="ic"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="2"><rect x="7" y="2" width="12" height="22" rx="3"/><path d="M11 20h4"/></svg></div><h3>Works on any phone</h3><p>Open it on a phone, tablet or computer — no app to install.</p></div>
+  <div><div class="ic"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="2"><rect x="7" y="2" width="12" height="22" rx="3"/><path d="M11 20h4"/></svg></div><h3>Works offline</h3><p>Runs on Windows, Android and iPhone — even when the internet is down.</p></div>
   <div><div class="ic"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="2"><circle cx="13" cy="13" r="10"/><path d="M13 7v12M9.5 10h5a2.5 2.5 0 010 5h-3a2.5 2.5 0 000 5h5"/></svg></div><h3>Fair one-time price</h3><p>Pay half to start and half when you're happy with it.</p></div>
   <div><div class="ic"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 13a9 9 0 1118 0v5a3 3 0 01-3 3h-2v-7h5M4 14h5v7H7a3 3 0 01-3-3z"/></svg></div><h3>Real support</h3><p>Call or WhatsApp us — we help in English and Swahili.</p></div>
   <div><div class="ic"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2l9 4v6c0 6-4 10-9 12-5-2-9-6-9-12V6z"/><path d="M9 13l3 3 5-6"/></svg></div><h3>Your data, your system</h3><p>All your records organised in one place, ready whenever you need them.</p></div>
@@ -246,6 +252,7 @@ footer .wrap{display:flex;gap:14px;justify-content:space-between;flex-wrap:wrap}
  <p class="kicker">Questions</p>
  <h2>Good to know</h2>
  <details><summary>How long does it take?</summary><p>A simple website takes about 3 days. A business system like Shop Manager or Payroll usually takes 1–3 weeks, depending on how much it needs to do.</p></details>
+ <details><summary>Do I need internet?</summary><p>No. Our ready systems install on Windows, Android and iPhone and keep working offline. Your data stays on your own device.</p></details>
  <details><summary>Do I need a computer?</summary><p>No. Every system works on a smartphone. A computer is helpful for printing reports, but not required.</p></details>
  <details><summary>Can you change it later?</summary><p>Yes. Small changes are included during your support period, and bigger additions are priced separately before we start.</p></details>
  <details><summary>Can I have my own web address?</summary><p>Yes. We can connect a name like yourbusiness.co.ke. The name has a small yearly fee, which we'll tell you before buying it.</p></details>
@@ -285,6 +292,7 @@ const $=id=>document.getElementById(id);
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const P='fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"';
 const ICON={
+ food:`<path d="M8 3v8a3 3 0 006 0V3M11 3v22M20 3c-2 2-3 5-3 9h4v13" ${P}/>`,
  till:`<rect x="3" y="12" width="22" height="12" rx="2" ${P}/><rect x="7" y="4" width="14" height="8" ${P}/><path d="M7 18h2M13 18h2M19 18h2" ${P}/>`,
  stock:`<rect x="3" y="14" width="10" height="10" ${P}/><rect x="13" y="14" width="10" height="10" ${P}/><rect x="8" y="4" width="10" height="10" ${P}/>`,
  pay:`<circle cx="10" cy="9" r="4" ${P}/><path d="M3 23c0-5 3-8 7-8s7 3 7 8" ${P}/><rect x="16" y="14" width="10" height="8" rx="2" ${P}/>`,
@@ -300,9 +308,10 @@ const ICON={
  school:`<path d="M2 11l12-6 12 6-12 6z" ${P}/><path d="M7 14v6c4 3 10 3 14 0v-6" ${P}/>`
 };
 const SYS=[
- {k:'till',c:'biz',t:'Shop Manager',d:'Record sales, see stock left, daily totals and profit — cash and M-Pesa.',f:'Shops, wholesalers, kiosks'},
- {k:'stock',c:'biz',t:'LPO & Stock System',d:'Raise LPOs, receive deliveries and track stock in and out, with low-stock alerts.',f:'Suppliers, stores, hardware'},
- {k:'pay',c:'biz',t:'Payroll',d:'Staff, salaries, advances and deductions, with payslips ready every month.',f:'Any business with staff'},
+ {k:'food',c:'biz',t:'Hotel & Restaurant System',d:'Waiter phones, kitchen screen, till, stock & recipes and owner reports.',f:'Hotels, restaurants, cafes',demo:0},
+ {k:'till',c:'biz',t:'Shop Manager',d:'Sales, quotations, invoices, suppliers, stock and profit — cash, M-Pesa and credit.',f:'Shops, supermarkets, wholesalers',demo:1},
+ {k:'stock',c:'biz',t:'LPO & Stock System',d:'Raise LPOs, receive deliveries and track stock in and out, with low-stock alerts.',f:'Hardware, stores, warehouses',demo:2},
+ {k:'pay',c:'biz',t:'Payroll',d:'PAYE, NSSF, SHIF and housing levy, attendance, advances and payslips.',f:'Any business with staff',demo:3},
  {k:'mall',c:'biz',t:'Mall Management',d:'Tenants, rent due and paid, service charges and maintenance requests.',f:'Malls, plazas, landlords'},
  {k:'money',c:'money',t:'Money Desk',d:'Track all money in and out, loans given and repayments due, in one place.',f:'Lenders, traders, owners'},
  {k:'chama',c:'money',t:'Chama Management',d:'Contributions, loans, fines and payouts — every member sees the same numbers.',f:'Chamas, saccos, groups'},
@@ -316,7 +325,7 @@ const SYS=[
 ];
 const CATS=[['all','All systems'],['biz','Business'],['money','Money & groups'],['care','Schools & health'],['web','Websites & apps']];
 const svg=(k,s=28)=>`<svg width="${s}" height="${s}" viewBox="0 0 28 28" aria-hidden="true">${ICON[k]}</svg>`;
-$('grid').innerHTML=SYS.map(s=>`<article class="card" data-c="${s.c}"><div class="ic">${svg(s.k)}</div><h3>${esc(s.t)}</h3><p>${esc(s.d)}</p><div class="for"><span>${esc(s.f)}</span><a href="#order" data-want="${esc(s.t)}">Order →</a></div></article>`).join('');
+$('grid').innerHTML=SYS.map(s=>`<article class="card" data-c="${s.c}"><div class="ic">${svg(s.k)}</div>${s.demo!==undefined?`<a class="ready" href="#preview" data-demo="${s.demo}">\u25B6 Ready \u00b7 watch demo</a>`:''}<h3>${esc(s.t)}</h3><p>${esc(s.d)}</p><div class="for"><span>${esc(s.f)}</span><a href="#order" data-want="${esc(s.t)}">Order →</a></div></article>`).join('');
 $('tabs').innerHTML=CATS.map(([v,l],i)=>`<button class="tab" data-v="${v}" aria-pressed="${i===0}">${l}</button>`).join('');
 $('tabs').addEventListener('click',e=>{const b=e.target.closest('.tab');if(!b)return;
  for(const t of $('tabs').children)t.setAttribute('aria-pressed',t===b);
@@ -326,29 +335,28 @@ const tick='<svg width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="
 const tbl=(h,rows)=>`<table><thead><tr>${h.map((x,i)=>`<th class="${i>=h.length-2?'n':''}">${x}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>`<tr>${r.map((x,i)=>`<td class="${i>=r.length-2?'n':''}">${x}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
 const kp=a=>`<div class="kpis">${a.map(([l,v],i)=>`<div class="kpi${i===0?' hl':''}"><small>${l}</small><b>${v}</b></div>`).join('')}</div>`;
 const PV=[
- {t:'Shop Manager',d:'Know exactly what you sold, what you earned and what to restock — every day.',l:['Sell with cash or M-Pesa and print or send receipts','See today’s sales and profit at a glance','Get alerts before stock runs out','Daily, weekly and monthly reports'],
-  s:kp([['Sales today','KSh 48,250'],['Profit','KSh 11,900'],['Low stock','3 items']])+tbl(['Item','Status','Qty','Price'],[['Sugar 2kg','<span class="pill warn">Low</span>','4','KSh 380'],['Cooking oil 1L','<span class="pill ok">OK</span>','36','KSh 310'],['Maize flour 2kg','<span class="pill ok">OK</span>','52','KSh 190'],['Rice 1kg','<span class="pill bad">Out</span>','0','KSh 220']])},
- {t:'School Fees Tracker',d:'See who has paid, who owes and how much — for every class and term.',l:['Record payments by M-Pesa, bank or cash','Instant balance for each student','Print receipts and fee statements','List of who still owes, by class'],
-  s:kp([['Collected','KSh 1.2M'],['Balance due','KSh 340K'],['Students','418']])+tbl(['Student','Class','Paid','Balance'],[['Achieng O.','Form 2','KSh 12,500','KSh 0'],['Brian K.','Form 3','KSh 8,000','KSh 4,500'],['Wanjiru M.','Form 1','KSh 15,000','KSh 0'],['Otieno J.','Form 4','KSh 3,000','KSh 9,500']])},
- {t:'Chama Management',d:'Every contribution, loan and payout recorded — and every member sees the same numbers.',l:['Monthly contributions and fines','Loans with interest and repayment dates','Merry-go-round turn schedule','Statements members can check anytime'],
-  s:kp([['Total savings','KSh 486,000'],['Loans out','KSh 120,000'],['Members','24']])+tbl(['Member','Status','Saved','Loan'],[['Mama Njeri','<span class="pill ok">Paid</span>','KSh 24,000','KSh 0'],['Peter M.','<span class="pill warn">Due</span>','KSh 18,000','KSh 15,000'],['Grace W.','<span class="pill ok">Paid</span>','KSh 24,000','KSh 5,000'],['Samuel O.','<span class="pill bad">Late</span>','KSh 12,000','KSh 20,000']])},
- {t:'Payroll',d:'Pay staff correctly and on time, with every advance and deduction recorded.',l:['Staff records and salaries','Advances and deductions tracked','Payslips ready every month','Monthly payroll totals and history'],
-  s:kp([['This month','KSh 642,000'],['Staff','18'],['Advances','KSh 22,000']])+tbl(['Staff','Role','Gross','Net'],[['Jane A.','Cashier','KSh 28,000','KSh 25,100'],['Kevin O.','Store keeper','KSh 32,000','KSh 28,400'],['Mercy N.','Accounts','KSh 45,000','KSh 38,900'],['Daniel K.','Driver','KSh 30,000','KSh 26,700']])}
+ {id:'restaurant',t:'MD Hotel & Restaurant',d:'One simple system for the whole restaurant — from the table to the kitchen to the owner’s report.',sys:'Hotel & Restaurant System',l:['Waiters take orders at the table on a phone or PC','Tickets arrive live on the kitchen screen','Till for cash and M-Pesa, with bills and VAT','Every plate sold takes its ingredients out of stock','Manager approves voids in one tap — everything recorded','Owner reports: sales, M-Pesa, best sellers, food cost and profit']},
+ {id:'supermarket',t:'MD Shop Manager',d:'Sell faster. Know your stock. See your profit.',sys:'Shop Manager',l:['Your shop’s day at a glance: sales, cash, M-Pesa and low stock','Sell in seconds — cash, M-Pesa, card or credit','Send a quotation and turn it into an invoice in one tap','Record supplier purchases; stock and costs update themselves','Profit and loss: know what you really earn after costs','Works with no internet']},
+ {id:'hardware',t:'MD Stocks Control',d:'Know exactly what you have, in every building.',sys:'LPO & Stock System',l:['Receive, issue and move goods between stores in seconds','Staff request, you approve — nothing leaves without your OK','Stock counts that show the differences','Reorder list sent to the owner on WhatsApp','A full history of every movement: who, what and when','Works with no internet']},
+ {id:'payroll',t:'MD Payroll',d:'Kenya payroll done right. In minutes, not days.',sys:'Payroll',l:['PAYE, NSSF, SHIF and housing levy calculated for you','Attendance and leave flow straight into the payroll','Salary advances and loans recovered monthly until cleared','Payslips to print, PDF or send on WhatsApp','Bank and M-Pesa payment files — pay everyone from one list','Works with no internet']}
 ];
 let pvI=0;
-$('pvTabs').innerHTML=PV.map((p,i)=>`<button class="tab" data-i="${i}" aria-pressed="${i===0}">${p.t}</button>`).join('');
-function showPV(i){pvI=i;const p=PV[i];
- $('pvTitle').textContent=p.t;$('pvText').textContent=p.d;$('pvBar').textContent='MD · '+p.t;
+$('pvTabs').innerHTML=PV.map((p,i)=>`<button class="tab" data-i="${i}" aria-pressed="${i===0}">${p.t.replace('MD ','')}</button>`).join('');
+function showPV(i,play){pvI=i;const p=PV[i];const v=$('pvVideo');
+ v.pause();v.src='videos/'+p.id+'.mp4';v.poster='videos/'+p.id+'.jpg';v.setAttribute('aria-label',p.t+' demo video');
+ if(play)v.play().catch(()=>{});
+ $('pvTitle').textContent=p.t;$('pvText').textContent=p.d;
  $('pvList').innerHTML=p.l.map(x=>`<li>${tick}<span>${esc(x)}</span></li>`).join('');
- $('pvScreen').innerHTML=p.s;$('pvBtn').dataset.want=p.t;
+ $('pvBtn').dataset.want=p.sys;
  for(const t of $('pvTabs').children)t.setAttribute('aria-pressed',+t.dataset.i===i)}
-$('pvTabs').addEventListener('click',e=>{const b=e.target.closest('.tab');if(b)showPV(+b.dataset.i)});
+$('pvTabs').addEventListener('click',e=>{const b=e.target.closest('.tab');if(b)showPV(+b.dataset.i,true)});
+document.addEventListener('click',e=>{const d=e.target.closest('[data-demo]');if(d){showPV(+d.dataset.demo,false)}});
 showPV(0);
 
 const PRICES=[
  {n:'Starter',a:'KSh 5,000',u:'one-time',items:['One-page business website','WhatsApp & call buttons','Ready in about 3 days','1 round of changes'],hot:false},
  {n:'Business',a:'KSh 15,000',u:'one-time',items:['Website or catalogue, up to 5 pages','Products or services list','Ready in about 7 days','3 rounds of changes'],hot:true},
- {n:'System',a:'KSh 30,000',u:'starting from',items:['Shop, stock, payroll, fees, chama, money, hospital or mall system','Your name and colours','Training for your team','1 month of free support'],hot:false}
+ {n:'System',a:'KSh 30,000',u:'starting from',items:['Restaurant, shop, stock, payroll, fees, chama, money, hospital or mall system','Your name and colours','Training for your team','1 month of free support'],hot:false}
 ];
 const tk=(c)=>`<svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="${c}"/><path d="M5 9.5l2.5 2.5L13 6.5" stroke="${c==='#ffb020'?'#1a1200':'#fff'}" stroke-width="2" fill="none" stroke-linecap="round"/></svg>`;
 $('priceList').innerHTML=PRICES.map(p=>`<div class="price${p.hot?' hot':''}">${p.hot?'<span class="badge">Most popular</span>':''}<h3>${p.n}</h3><div class="amt">${p.a}</div><div class="muted">${p.u}</div><ul>${p.items.map(i=>`<li>${tk(p.hot?'#ffb020':'#0b4fd1')}<span>${esc(i)}</span></li>`).join('')}</ul><a class="btn ${p.hot?'sun':'ghost'}" href="#order" data-pkg="${p.n}">Choose ${p.n}</a></div>`).join('');
